@@ -87,7 +87,7 @@ export class HomePageComponent implements OnInit {
         let index = this.activePads.findIndex((pad) => {
           return pad.pad.id === padObj.id;
         });
-        this.activePads[index].audio.pause();
+        this.activePads[index]?.audio.pause();
         // if (index > -1) {
         //   this.activePads.splice(index, 1);
         // }
