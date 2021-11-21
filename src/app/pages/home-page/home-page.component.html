@@ -1,0 +1,17 @@
+<div class="home-page-wrapper">
+  <div class="header">{{ pageTitle }}</div>
+  <div class="panel-wrapper">
+    <div class="panel">
+      <div class="pad-wrapper" *ngFor="let pad of pads">
+        <app-pad
+          [pad]="pad"
+          (changeStateEmitter)="changePadState($event)"
+        ></app-pad>
+      </div>
+    </div>
+    <div class="panel-controls">
+      <button class="btn" (click)="play()" [disabled]="isPlaying">Play</button>
+      <button class="btn" (click)="stop()">Pause</button>
+    </div>
+  </div>
+</div>

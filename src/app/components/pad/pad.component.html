@@ -1,0 +1,7 @@
+<div
+  class="pad-wrapper"
+  [ngClass]="{ 'active-pad': pad.state }"
+  (click)="togglePadState()"
+>
+  <div class="name">{{ pad.name }}</div>
+</div>

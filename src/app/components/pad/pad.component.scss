@@ -1,0 +1,17 @@
+.pad-wrapper {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  background: darkgray;
+  border-radius: 12px;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.85;
+  }
+  .name {
+  }
+}
+.active-pad {
+  background-color: #00ff00;
+}
