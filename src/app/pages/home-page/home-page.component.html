@@ -1,13 +1,3 @@
-<!-- TO DO:
-****************
-1.Add comment for clarity
-2.Css-styles
-3.Grooming variables
-4.Mobile responsivity
-5.Bug fixes - start btn before clicks ERROR(promises not handled)
-6.(BONUS) Record and Load buttons
-7.(optional) Master Volume, Instrument Volume
-6.Build & Deployment.--> 
 <div class="home-page-wrapper">
   <div class="header">{{ pageTitle }}</div>
   <div class="panel-wrapper">
@@ -19,9 +9,26 @@
         ></app-pad>
       </div>
     </div>
+
+    <!-- holds play/pause,record,load buttons-->
     <div class="panel-controls">
+      <div
+        class="looper-toggle"
+        *ngIf="!isPlaying; then thenBlock; else elseBlock"
+      ></div>
+      <ng-template #thenBlock>
+        <button class="btn" (click)="play()">Run looper</button></ng-template
+      >
+      <ng-template #elseBlock>
+        <button class="btn" (click)="stop()">Pause looper</button></ng-template
+      >
+
+      <div class="record-btn"><button>Record</button></div>
+      <div class="load-btn"><button>Load</button></div>
+
+      <!-- // double button play and pause OPTION
       <button class="btn" (click)="play()" [disabled]="isPlaying">Play</button>
-      <button class="btn" (click)="stop()">Pause</button>
+      <button class="btn" (click)="stop()">Pause</button> -->
     </div>
   </div>
 </div>

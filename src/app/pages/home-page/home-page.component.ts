@@ -13,19 +13,20 @@ export class HomePageComponent implements OnInit {
   pads: Pad[] = [];
   activePads: any[] = [];
   pageTitle: string = 'Grooveo';
+  prefixUrl: string = '/assets/';
   isPlaying: boolean = false;
 
   constructor() {
     this.pads = [
       {
         id: 1,
-        name: 'future_funk_beats',
+        name: 'Future_funk_beats',
         fileUrl: '120_future_funk_beats_25.mp3',
         state: false,
       },
       {
         id: 2,
-        name: 'stutter_breakbeats',
+        name: 'Stutter_breakbeats',
         fileUrl: '120_stutter_breakbeats_16.mp3',
         state: false,
       },
@@ -37,7 +38,7 @@ export class HomePageComponent implements OnInit {
       },
       {
         id: 4,
-        name: 'electric guitar',
+        name: 'Electric guitar',
         fileUrl: 'electric guitar coutry slide 120bpm - B.mp3',
         state: false,
       },
@@ -88,20 +89,19 @@ export class HomePageComponent implements OnInit {
           return pad.pad.id === padObj.id;
         });
         this.activePads[index]?.audio.pause();
-        // if (index > -1) {
-        //   this.activePads.splice(index, 1);
-        // }
       }
     }
   }
 
+  //play all active loops
   play() {
+    // 8sec cycle proccess
     this.sub = timer(0, 8000).subscribe(() => {
-      const prefixUrl = '/assets/';
       this.isPlaying = true;
-      const padsArr: Pad[] = this.getActivePads();
-      padsArr.forEach((pad, i) => {
-        let audio = new Audio(prefixUrl + pad.fileUrl);
+      const activePads: Pad[] = this.getActivePads(); //collect turned on pads
+      activePads.forEach((pad, i) => {
+        //play and store active pads
+        let audio = new Audio(this.prefixUrl + pad.fileUrl);
         this.activePads.push({
           pad,
           audio,
@@ -111,6 +111,7 @@ export class HomePageComponent implements OnInit {
     });
   }
 
+  //immediatly stops all active loops
   stop() {
     for (const activePad of this.activePads) {
       activePad.audio.pause();
@@ -121,13 +122,13 @@ export class HomePageComponent implements OnInit {
   }
 
   private getActivePads(): Pad[] {
-    let padsArr: Pad[] = [];
+    let activePadsArr: Pad[] = [];
     this.pads.forEach((pad) => {
       if (pad.state) {
-        padsArr.push(pad);
+        activePadsArr.push(pad);
       }
     });
     this.activePads = [];
-    return padsArr;
+    return activePadsArr;
   }
 }

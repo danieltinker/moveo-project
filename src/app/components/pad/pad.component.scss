@@ -1,17 +1,22 @@
 .pad-wrapper {
   display: flex;
-  height: 100%;
+  height: 90%;
+  margin-left: 30px;
+  margin-right: 30px;
   align-items: center;
   justify-content: center;
   background: darkgray;
+  color: azure;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  font-size: 22px;
   border-radius: 12px;
   cursor: pointer;
   &:hover {
     opacity: 0.85;
   }
-  .name {
-  }
 }
 .active-pad {
-  background-color: #00ff00;
+  background-color: greenyellow;
 }
