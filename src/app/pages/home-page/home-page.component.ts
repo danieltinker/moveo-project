@@ -106,7 +106,9 @@ export class HomePageComponent implements OnInit {
           pad,
           audio,
         });
-        this.activePads[i].audio.play();
+        // this.activePads[i].audio.play();
+        this.activePads[i].audio.autoplay = true;
+        // let x = new Audio('')
       });
     });
   }
